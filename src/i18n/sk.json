@@ -8,14 +8,14 @@
         "about": "O nás",
         "services": "Služby",
         "events": "Podujatia",
-        "resources": "Zdroje",
+        "resources": "Knižnica",
         "contact": "Kontakt",
         "menu": "Menu"
     },
     "hero": {
         "title": "Prevencia emocionálneho a psychického zneužívania",
-        "subtitle": "To, čo považujete za normálne, môže vášmu dieťaťu škodiť",
-        "description": "Na rozdiel od sexuálneho a fyzického zneužívania, emocionálne a psychické zneužívanie (EPA) nie je dostatočne známe pre svoj devastačný dopad na deti. Obete takéhoto škodlivého správania môžu vykazovať vážne príznaky podobné tým, ktoré spôsobuje sexuálne alebo fyzické zneužívanie. Pre niektorých môže byť poškodenie nezvratné a neskôr sa môže preniesť na ich vlastné deti. Naša organizácia si dala za cieľ prelomiť tento začarovaný kruh."
+        "subtitle": "Čo považujeme za normálne môže ubližovať Vašim deťom",
+        "description": "Na rozdiel od sexuálneho a fyzického zneužívania nie je emocionálne a psychické zneužívanie (EPA) dostatočne známe pre svoj ničivý vplyv na deti. Deti, ktoré sa stali obeťami takéhoto škodlivého správania, môžu vykazovať závažné príznaky podobné tým, ktoré spôsobuje sexuálne alebo fyzické zneužívanie. V niektorých prípadoch môžu byť následky nezvratné a neskôr sa môžu preniesť aj na ich vlastné deti. Naša organizácia si stanovila za cieľ prerušiť tento začarovaný kruh. Preto poskytujeme:"
     },
     "pillars": {
         "awareness": {
@@ -31,14 +31,14 @@
             "description": [
                 "Školenie odborníkov, ako sú psychológovia, učitelia, právnici, sociálni pracovníci alebo sudcovia",
                 "Presadzovanie opatrení a postupov na identifikáciu a reakciu na emocionálne a psychické zneužívanie",
-                "Poskytovanie siete a podpory medzi odborníkmi a príslušnými inštitúciami"
+                "Budovanie siete spolupráce a poskytovanie podpory medzi odborníkmi a relevantnými inštitúciami."
             ]
         },
         "legislative": {
             "title": "Presadzovanie legislatívnych zmien",
             "description": [
                 "Presadzovanie reforiem v právnom systéme, aby boli deti lepšie chránené pred emocionálnym a psychickým zneužívaním",
-                "Navrhovanie prostriedkov uplatňovaných súdmi s cieľom prinútiť rodičov zapojiť sa do konštruktívneho procesu na zabezpečenie bezpečnosti a blaha ich detí"
+                "Navrhovanie opatrení uplatňovaných súdom s cieľom motivovať rodičov k zapojeniu sa do konštruktívneho procesu, ktorý zabezpečí bezpečnosť a blaho ich detí."
             ]
         }
     },
@@ -121,19 +121,19 @@
     "team": {
         "samuel": {
             "name": "Samuel Schürer",
-            "role": "Psychologický poradca od roku 1993",
+            "role": "Terapeut od roku 1993",
             "description": "Počas viac ako troch desaťročí praxe som bol znova a znova svedkom toho, ako dospelí klienti stále trpia emocionálnym a psychickým zlým zaobchádzaním, ktoré znášali ako deti. Ako párový poradca som tiež pozoroval, ako ich môžu konflikty rodičov znecitlivieť voči utrpeniu, ktorým prechádzajú ich deti. Je tragické, že rodičia často opakujú vzorce ubližovania, ktoré sami kedysi prežili. Aby sme prelomili tento cyklus, musíme chrániť tých najzraniteľnejších: naše deti."
         },
         "patrik": {
             "name": "Patrik Takáč",
-            "role": "Manažér administratívy a komunikácie",
-            "description": "Verím, že komunikácia je jedným z najmocnejších nástrojov, ktoré máme na formovanie sveta. Pre mňa je to príležitosť prispieť k ochrane detí a k prevencii emocionálneho zneužívania – problému, ktorý je v našej spoločnosti stále príliš často prehliadaný. Chcem, aby moja práca mala zmysel presahujúci ju samotnú – aby podporovala zmenu, ktorú považujem za nevyhnutnú a správnu."
+            "role": "Administračný a komunikačný manažér",
+            "description": "Som presvedčený, že komunikácia je jedným z najsilnejších nástrojov, ktoré máme – dokáže spájať ľudí, prinášať pochopenie a meniť prostredie, v ktorom žijeme. Komunikácia je odbor, v ktorom sa cítim byť doma a svoje schopnosti chcem využívať na podporu hodnôt a tém, v ktoré verím a ktoré majú skutočný dosah na spoločnosť, preto som sa rozhodil stať sa súčasťou tejto organizácie. Pre mňa to znamená možnosť prispieť k ochrane detí a k prevencii emocionálneho ubližovania, ktoré je v našej spoločnosti tak veľmi zanedbané. Je to oblasť, ktorá si vyžaduje nielen odborné vedomosti, ale aj citlivosť, vytrvalosť a presvedčenie, že každé dieťa má právo na bezpečné a láskavé prostredie. Chcem, aby moja práca mala presah – aby podporovala zmenu, ktorú považujem za potrebnú a správnu."
         }
     },
     "footer": {
         "orgName": "Organizácia EPAO",
         "email": "epao@epao.sk",
-        "phone": "+421 919 043 606",
+        "phone": "+421 944 400 999",
         "addressLine1": "Laurinská 11",
         "addressLine2": "Bratislava, Slovensko",
         "logoAlt": "Logo EPAO",
