@@ -115,7 +115,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       <div className={styles.turnstileWrapper + (hideTurnstile ? " " + styles.hideTurnstile : "")}>
         <Turnstile
           style={{ margin: "0 auto", borderRadius: "12px" }}
-          siteKey="0x4AAAAAADMOOW5NVkZ5sokj"
+          siteKey="0x4AAAAAAESm7CKmhxlXWGcb"
           onSuccess={(token) => {
             setHideTurnstile(true);
             setForm((prev) => ({ ...prev, token }));

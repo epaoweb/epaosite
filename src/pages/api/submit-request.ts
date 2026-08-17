@@ -11,9 +11,10 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const url = env.TURSO_CONNECTION_URL || import.meta.env.TURSO_CONNECTION_URL;
     const token = env.TURSO_AUTH_TOKEN || import.meta.env.TURSO_AUTH_TOKEN;
+    const turnstileSecret = env.TURNSTILE_SECRET_KEY || import.meta.env.TURNSTILE_SECRET_KEY;
 
-    if (!url || !token) {
-      console.error("Missing Turso configuration");
+    if (!url || !token || !turnstileSecret) {
+      console.error("Missing server configuration or secrets");
       return new Response(JSON.stringify({ error: "Server Configuration Error" }), { status: 500 });
     }
 
@@ -31,7 +32,7 @@ export const POST: APIRoute = async ({ request }) => {
     const turnstileToken = formData.get("cf-turnstile-response");
 
     const params = new URLSearchParams();
-    params.append("secret", "0x4AAAAAADMOOSpqvuX7mfcbaYspui_-JoY");
+    params.append("secret", turnstileSecret);
     params.append("response", turnstileToken as string);
 
     const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
