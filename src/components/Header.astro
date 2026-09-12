@@ -11,10 +11,10 @@ const i18n = useTranslations(locale);
 ---
 
 <header>
-  <div id="logo-container">
+  <a id="logo-container" href="" >
     <img src={logo.src} alt="" width="40" height="40" />
     <span class="logo">EPAO</span>
-  </div>
+  </button>
 
   <!-- Desktop nav (hidden on mobile) -->
   <nav class="desktop-nav">
@@ -336,14 +336,14 @@ const i18n = useTranslations(locale);
     if (!hamburger || !sidebar || !overlay || !closeBtn) return;
 
     function openSidebar() {
-      sidebar.classList.add("open");
-      overlay.classList.add("open");
+      sidebar!.classList.add("open");
+      overlay!.classList.add("open");
       document.body.style.overflow = "hidden";
     }
 
     function closeSidebar() {
-      sidebar.classList.remove("open");
-      overlay.classList.remove("open");
+      sidebar!.classList.remove("open");
+      overlay!.classList.remove("open");
       document.body.style.overflow = "";
     }
 

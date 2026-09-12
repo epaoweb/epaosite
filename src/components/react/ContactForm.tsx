@@ -4,14 +4,12 @@ import { type IRequestForm, mapIRequestFormToFormData } from "../../types/contac
 import { showSnackbar } from "../../utils/snackbar";
 import styles from "./ContactForm.module.css";
 import { Turnstile } from "@marsidev/react-turnstile";
-import en from "../../i18n/en.json";
+import { useTranslations, type Locale } from "../../i18n";
 
 interface ContactFormProps {
   onSubmit: (formData: FormData) => Promise<void>;
   onClose: () => void;
 }
-
-const t = en.contactForm;
 
 const initialFormState: IRequestForm = {
   name: { value: "", error: "" },
@@ -27,6 +25,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   const [form, setForm] = useState<IRequestForm>(initialFormState);
   const [loading, setLoading] = useState(false);
   const [hideTurnstile, setHideTurnstile] = useState(false);
+  const locale: Locale = (Astro.cookies.get("lang")?.value as Locale) || "en";
+  const i18n = useTranslations(locale).contactForm;
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -47,22 +47,22 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
     // Validate Name
     if (!newForm.name.value.trim()) {
-      newForm.name.error = t.name.errorRequired;
+      newForm.name.error = i18n.name.errorRequired;
       isValid = false;
     }
 
     // Validate Email
     if (!newForm.email.value.trim()) {
-      newForm.email.error = t.email.errorRequired;
+      newForm.email.error = i18n.email.errorRequired;
       isValid = false;
     } else if (!validateEmail(newForm.email.value)) {
-      newForm.email.error = t.email.errorInvalid;
+      newForm.email.error = i18n.email.errorInvalid;
       isValid = false;
     }
 
     // Validate Message
     if (!newForm.message.value.trim()) {
-      newForm.message.error = t.message.errorRequired;
+      newForm.message.error = i18n.message.errorRequired;
       isValid = false;
     }
 
@@ -75,10 +75,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
     try {
       await onSubmit(requestData);
-      showSnackbar(t.success, "success");
+      showSnackbar(i18n.success, "success");
       setForm(initialFormState); // Reset on success if needed
     } catch (error) {
-      showSnackbar(t.error, "error");
+      showSnackbar(i18n.error, "error");
     } finally {
       setLoading(false);
     }
@@ -88,24 +88,24 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       <Input
         id="name"
-        label={t.name.label}
-        placeholder={t.name.placeholder}
+        label={i18n.name.label}
+        placeholder={i18n.name.placeholder}
         value={form.name.value}
         error={form.name.error}
         onChange={(e) => handleChange("name", e.target.value)}
       />
       <Input
         id="email"
-        label={t.email.label}
-        placeholder={t.email.placeholder}
+        label={i18n.email.label}
+        placeholder={i18n.email.placeholder}
         value={form.email.value}
         error={form.email.error}
         onChange={(e) => handleChange("email", e.target.value)}
       />
       <Input
         id="message"
-        label={t.message.label}
-        placeholder={t.message.placeholder}
+        label={i18n.message.label}
+        placeholder={i18n.message.placeholder}
         textarea
         value={form.message.value}
         error={form.message.error}
@@ -129,7 +129,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           className={`${styles.button} ${styles.buttonOutline}`}
           onClick={onClose}
         >
-          {t.cancel}
+          {i18n.cancel}
         </button>
         <button
           type="submit"
@@ -168,7 +168,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
               <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
             </svg>
           )}
-          {t.send}
+          {i18n.send}
         </button>
       </div>
     </form>
