@@ -1,5 +1,5 @@
 ---
-import { useTranslations } from "../i18n";
+import { useTranslations, type Locale } from "../i18n";
 import ServiceCard from "./ServiceCard.astro";
 import MegaphoneIcon from "./icons/MegaphoneIcon.astro";
 import PencilRulerIcon from "./icons/PencilRulerIcon.astro";
@@ -7,7 +7,8 @@ import CompassIcon from "./icons/CompassIcon.astro";
 import HandHeartIcon from "./icons/HandHeart.astro";
 import Button from "./Button.astro";
 
-const i18n = useTranslations(Astro.cookies);
+const locale: Locale = (Astro.cookies.get("lang")?.value as Locale) || "en";
+const i18n = useTranslations(locale);
 ---
 
 <section id="services" class="front-section">

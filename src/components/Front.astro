@@ -1,11 +1,12 @@
 ---
 import toys from "../assets/toys.jpg";
-import { useTranslations } from "../i18n";
+import { useTranslations, type Locale } from "../i18n";
 import EducationIcon from "./icons/EducationIcon.astro";
 import EyeIcon from "./icons/EyeIcon.astro";
 import ScaleIcon from "./icons/ScaleIcon.astro";
 import PillarCard from "./PillarCard.astro";
-const i18n = useTranslations(Astro.cookies);
+const locale: Locale = (Astro.cookies.get("lang")?.value as Locale) || "en";
+const i18n = useTranslations(locale);
 ---
 
 <main

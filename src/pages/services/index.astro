@@ -1,11 +1,12 @@
 ---
 import Modal from "../../components/Modal.astro";
-import { GeneralRequestForm } from "../../components/react/GeneralRequestForm";
-import { useTranslations } from "../../i18n";
+import { ContactForm } from "../../components/react/ContactForm";
+import { useTranslations, type Locale } from "../../i18n";
 import Layout from "../../layouts/Layout.astro";
 import SectionLayout from "../../layouts/SectionLayout.astro";
 
-const i18n = useTranslations(Astro.cookies);
+const locale: Locale = (Astro.cookies.get("lang")?.value as Locale) || "en";
+const i18n = useTranslations(locale);
 ---
 
 <Layout>
@@ -236,7 +237,7 @@ const i18n = useTranslations(Astro.cookies);
           </div>
         </div>
         <Modal id="contact-modal" title={i18n.services.requestInfo}>
-          <GeneralRequestForm client:load />
+          <ContactForm client:load locale={locale} />
         </Modal>
       </div>
     </div>

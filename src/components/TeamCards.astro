@@ -2,9 +2,10 @@
 import TeamCard from "./TeamCard.astro";
 import samuelImg from "../assets/samuel.jpg";
 import patrikImg from "../assets/patrik.jpg";
-import { useTranslations } from "../i18n";
+import { useTranslations, type Locale } from "../i18n";
 
-const i18n = useTranslations(Astro.cookies);
+const locale: Locale = (Astro.cookies.get("lang")?.value as Locale) || "en";
+const i18n = useTranslations(locale);
 ---
 
 <div class="about-team-inner">

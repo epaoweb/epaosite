@@ -15,7 +15,8 @@ export interface Props {
 }
 
 const { page } = Astro.props;
-const i18n = useTranslations(Astro.cookies);
+const locale: Locale = (Astro.cookies.get("lang")?.value as Locale) || "en";
+const i18n = useTranslations(locale);
 ---
 
 <div class="resources-grid-wrapper">

@@ -3,11 +3,12 @@ import EventsList from "../../components/EventsList.astro";
 import SectionLayout from "../../layouts/SectionLayout.astro";
 import EventTabs from "../../components/EventTabs.astro";
 import Layout from "../../layouts/Layout.astro";
-import { useTranslations } from "../../i18n";
+import { useTranslations, type Locale } from "../../i18n";
 
 const rawPage = Astro.params.page;
 const currentPage = rawPage ? parseInt(rawPage, 10) : 1;
-const i18n = useTranslations(Astro.cookies);
+const locale: Locale = (Astro.cookies.get("lang")?.value as Locale) || "en";
+const i18n = useTranslations(locale);
 ---
 
 <Layout>

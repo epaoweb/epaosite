@@ -6,11 +6,6 @@ import styles from "./ContactForm.module.css";
 import { Turnstile } from "@marsidev/react-turnstile";
 import { useTranslations, type Locale } from "../../i18n";
 
-interface ContactFormProps {
-  onSubmit: (formData: FormData) => Promise<void>;
-  onClose: () => void;
-}
-
 const initialFormState: IRequestForm = {
   name: { value: "", error: "" },
   email: { value: "", error: "" },
@@ -18,15 +13,34 @@ const initialFormState: IRequestForm = {
   token: "",
 };
 
-export const ContactForm: React.FC<ContactFormProps> = ({
-  onSubmit,
-  onClose,
-}: ContactFormProps) => {
+export const ContactForm: React.FC<{ locale: Locale }> = ({ locale }: { locale?: Locale }) => {
   const [form, setForm] = useState<IRequestForm>(initialFormState);
   const [loading, setLoading] = useState(false);
   const [hideTurnstile, setHideTurnstile] = useState(false);
-  const locale: Locale = (Astro.cookies.get("lang")?.value as Locale) || "en";
-  const i18n = useTranslations(locale).contactForm;
+  const i18n = useTranslations(locale ?? "en").contactForm;
+
+  const onSubmit = async (formData: FormData) => {
+    const response = await fetch("/api/submit-request", {
+      method: "POST",
+      body: formData,
+    });
+
+    await response.json();
+
+    if (!response.ok) {
+      throw new Error("Submission failed");
+    }
+
+    handleClose();
+  };
+
+  const handleClose = () => {
+    // Close the modal when cancelled
+    const modal = document.getElementById("contact-modal") as HTMLDialogElement | null;
+    if (modal) {
+      modal.close();
+    }
+  };
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -127,7 +141,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         <button
           type="button"
           className={`${styles.button} ${styles.buttonOutline}`}
-          onClick={onClose}
+          onClick={handleClose}
         >
           {i18n.cancel}
         </button>

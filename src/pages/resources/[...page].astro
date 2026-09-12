@@ -4,12 +4,13 @@ import ResourcesList from "../../components/ResourcesList.astro";
 import { getTursoClient } from "../../lib/tursoclient";
 import Layout from "../../layouts/Layout.astro";
 import { env } from "cloudflare:workers";
-import { useTranslations } from "../../i18n";
+import { useTranslations, type Locale } from "../../i18n";
 
 const PAGE_SIZE = 6;
 const rawPage = Astro.params.page;
 const currentPage = rawPage ? parseInt(rawPage, 10) : 1;
-const i18n = useTranslations(Astro.cookies);
+const locale: Locale = (Astro.cookies.get("lang")?.value as Locale) || "en";
+const i18n = useTranslations(locale);
 
 const url = env.TURSO_CONNECTION_URL || import.meta.env.TURSO_CONNECTION_URL;
 const token = env.TURSO_AUTH_TOKEN || import.meta.env.TURSO_AUTH_TOKEN;

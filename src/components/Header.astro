@@ -2,19 +2,19 @@
 import Button from "./Button.astro";
 import logo from "../assets/logo.svg";
 import Modal from "./Modal.astro";
-import { GeneralRequestForm } from "./react/GeneralRequestForm";
 import { useTranslations, type Locale } from "../i18n";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
+import { ContactForm } from "./react/ContactForm";
 const path = Astro.url.pathname;
 const locale: Locale = (Astro.cookies.get("lang")?.value as Locale) || "en";
 const i18n = useTranslations(locale);
 ---
 
 <header>
-  <a id="logo-container" href="" >
+  <a id="logo-container" href="">
     <img src={logo.src} alt="" width="40" height="40" />
     <span class="logo">EPAO</span>
-  </button>
+  </a>
 
   <!-- Desktop nav (hidden on mobile) -->
   <nav class="desktop-nav">
@@ -40,7 +40,12 @@ const i18n = useTranslations(locale);
   <div class="desktop-actions">
     <LanguageSwitcher />
     <div class="desktop-cta">
-      <Button variant="primary" text={i18n.nav.contact} command="show-modal" commandFor="contact-modal" />
+      <Button
+        variant="primary"
+        text={i18n.nav.contact}
+        command="show-modal"
+        commandFor="contact-modal"
+      />
     </div>
   </div>
 
@@ -52,7 +57,7 @@ const i18n = useTranslations(locale);
   </button>
 
   <Modal id="contact-modal" title={i18n.nav.contact}>
-    <GeneralRequestForm client:load />
+    <ContactForm client:load locale={locale} />
   </Modal>
 </header>
 
@@ -81,10 +86,14 @@ const i18n = useTranslations(locale);
   </div>
   <nav class="sidebar-nav">
     <a href="/" class={`sidebar-link ${path === "/" ? "active" : ""}`}>{i18n.nav.home}</a>
-    <a href="/about" class={`sidebar-link ${path.startsWith("/about") ? "active" : ""}`}>{i18n.nav.about}</a
+    <a href="/about" class={`sidebar-link ${path.startsWith("/about") ? "active" : ""}`}
+      >{i18n.nav.about}</a
     >
-    <a href="/services" class={`sidebar-link ${path === "/services" ? "active" : ""}`}>{i18n.nav.services}</a>
-    <a href="/events" class={`sidebar-link ${path.startsWith("/events") ? "active" : ""}`}>{i18n.nav.events}</a
+    <a href="/services" class={`sidebar-link ${path === "/services" ? "active" : ""}`}
+      >{i18n.nav.services}</a
+    >
+    <a href="/events" class={`sidebar-link ${path.startsWith("/events") ? "active" : ""}`}
+      >{i18n.nav.events}</a
     >
     <a href="/resources" class={`sidebar-link ${path === "/resources" ? "active" : ""}`}
       >{i18n.nav.resources}</a
@@ -94,7 +103,12 @@ const i18n = useTranslations(locale);
     <LanguageSwitcher id="sidebar" />
   </div>
   <div class="sidebar-cta">
-    <Button variant="primary" text={i18n.nav.contact} command="show-modal" commandFor="contact-modal" />
+    <Button
+      variant="primary"
+      text={i18n.nav.contact}
+      command="show-modal"
+      commandFor="contact-modal"
+    />
   </div>
 </aside>
 
