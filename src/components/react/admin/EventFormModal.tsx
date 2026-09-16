@@ -124,119 +124,120 @@ export const EventFormModal: React.FC<Props> = ({ event, onClose, onSuccess }) =
         {error && <div className="admin-error mb-4">{error}</div>}
 
         <form onSubmit={handleSubmit} className="admin-modal-form">
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="description">Description</label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              required
-              rows={4}
-            />
-          </div>
-
-          <div className="form-group-row">
+          <div className="form-content">
             <div className="form-group">
-              <label htmlFor="price">Price (EUR)</label>
+              <label htmlFor="name">Name</label>
               <input
-                type="number"
-                id="price"
-                name="price"
-                value={formData.price}
-                onChange={handleChange}
-                required
-                min="0"
-                step="0.01"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="date">Date</label>
-              <input
-                type="datetime-local"
-                id="date"
-                name="date"
-                value={dayjs.utc(formData.date).local().format("YYYY-MM-DDTHH:mm")}
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
                 required
               />
             </div>
-          </div>
 
-          <div className="form-group">
-            <label>Event Image</label>
-            <div className="image-upload-container">
-              {previewUrl && !isImageDeleted ? (
-                <div className="image-preview-wrapper">
-                  <img src={previewUrl} alt="Preview" className="image-preview" />
-                  <div className="image-actions">
-                    <label className="admin-action-btn outline cursor-pointer text-center">
-                      Change Image
-                      <input
-                        type="file"
-                        accept="image/jpeg, image/png, image/webp"
-                        onChange={handleFileChange}
-                        style={{ display: "none" }}
-                      />
-                    </label>
-                    <button
-                      type="button"
-                      className="admin-action-btn delete"
-                      onClick={handleDeleteImage}
-                    >
-                      Delete Image
-                    </button>
+            <div className="form-group">
+              <label htmlFor="description">Description</label>
+              <textarea
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                required
+                rows={4}
+              />
+            </div>
+
+            <div className="form-group-row">
+              <div className="form-group">
+                <label htmlFor="price">Price (EUR)</label>
+                <input
+                  type="number"
+                  id="price"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleChange}
+                  required
+                  min="0"
+                  step="0.01"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="date">Date</label>
+                <input
+                  type="datetime-local"
+                  id="date"
+                  name="date"
+                  value={dayjs.utc(formData.date).local().format("YYYY-MM-DDTHH:mm")}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label>Event Image</label>
+              <div className="image-upload-container">
+                {previewUrl && !isImageDeleted ? (
+                  <div className="image-preview-wrapper">
+                    <img src={previewUrl} alt="Preview" className="image-preview" />
+                    <div className="image-actions">
+                      <label className="admin-action-btn outline cursor-pointer text-center">
+                        Change Image
+                        <input
+                          type="file"
+                          accept="image/jpeg, image/png, image/webp"
+                          onChange={handleFileChange}
+                          style={{ display: "none" }}
+                        />
+                      </label>
+                      <button
+                        type="button"
+                        className="admin-action-btn delete"
+                        onClick={handleDeleteImage}
+                      >
+                        Delete Image
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className="image-placeholder">
-                  <div className="placeholder-content">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="48"
-                      height="48"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      style={{ opacity: 0.5, marginBottom: "0.5rem" }}
-                    >
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                      <polyline points="21 15 16 10 5 21"></polyline>
-                    </svg>
-                    <p style={{ color: "var(--gray-500)", margin: "0 0 1rem 0" }}>
-                      No image selected
-                    </p>
-                    <label className="admin-action-btn">
-                      Add Image
-                      <input
-                        type="file"
-                        accept="image/jpeg, image/png, image/webp"
-                        onChange={handleFileChange}
-                        style={{ display: "none" }}
-                      />
-                    </label>
+                ) : (
+                  <div className="image-placeholder">
+                    <div className="placeholder-content">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="48"
+                        height="48"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        style={{ opacity: 0.5, marginBottom: "0.5rem" }}
+                      >
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <polyline points="21 15 16 10 5 21"></polyline>
+                      </svg>
+                      <p style={{ color: "var(--gray-500)", margin: "0 0 1rem 0" }}>
+                        No image selected
+                      </p>
+                      <label className="admin-action-btn">
+                        Add Image
+                        <input
+                          type="file"
+                          accept="image/jpeg, image/png, image/webp"
+                          onChange={handleFileChange}
+                          style={{ display: "none" }}
+                        />
+                      </label>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
-
           <div className="admin-modal-footer">
             <button
               type="button"
